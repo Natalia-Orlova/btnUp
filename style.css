@@ -1,0 +1,51 @@
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 500px;
+    margin-bottom: 500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* .btn-up {
+    position: fixed;
+    left: 30px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #ccc;
+    opacity: 100%;
+    transition: all 0.5s;
+}
+
+.btn-up:hover {
+    background-color: #746f6f;
+}
+
+.btn-up::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-image: url("arrow-up.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.btn-up__hide {
+    opacity: 0;
+    transition: 0.5s;
+} 
+
+/* url(/app/images/icons/pagination_arrow.png) */
+
+/* @media (max-width:900px) {
+    .btn-up {
+        left: 20px;
+        bottom: 10px;
+    }
+} */
