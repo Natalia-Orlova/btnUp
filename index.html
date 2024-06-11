@@ -218,14 +218,39 @@
     </div>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(registration => {
-                    console.log('Service worker registered:', registration);
-                })
-                .catch(error => {
-                    console.error('Service worker registration failed:', error);
+        // if ('serviceWorker' in navigator) {
+        //     navigator.serviceWorker.register('service-worker.js')
+        //         .then(registration => {
+        //             console.log('Service worker registered:', registration);
+        //         })
+        //         .catch(error => {
+        //             console.error('Service worker registration failed:', error);
+        //         });
+        // }
+        // Проверяем, поддерживает ли браузер PWA
+        if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
+            // Создаем кнопку для установки приложения
+            const installButton = document.createElement('button');
+            installButton.textContent = 'Установить приложение';
+            document.body.appendChild(installButton);
+
+            // Добавляем обработчик события beforeinstallprompt
+            window.addEventListener('beforeinstallprompt', (event) => {
+                // Отменяем событие, чтобы предотвратить автоматическое отображение диалога установки
+                event.preventDefault();
+
+                // Показываем кнопку для установки приложения
+                installButton.style.display = 'block';
+
+                // Добавляем обработчик клика на кнопку
+                installButton.addEventListener('click', () => {
+                    // Отображаем диалог установки приложения
+                    event.prompt();
+
+                    // Скрыть кнопку после установки приложения
+                    installButton.style.display = 'none';
                 });
+            });
         }
     </script>
 </body>
