@@ -14,19 +14,6 @@
         "type": "image/png"
       }
     ],
-    "screenshots": [
-      {
-        "src": "images/screen-645x376.png",
-        "sizes": "645x376",
-        "type": "image/png",
-        "form_factor": "wide"
-      },
-      {
-        "src": "images/image-359x659.png",
-        "sizes": "359x659",
-        "type": "image/png"
-      }
-    ],
     "start_url": "https://natalia-orlova.github.io/btnUp/",
     "display": "fullscreen",
     "background_color": "#fff",
