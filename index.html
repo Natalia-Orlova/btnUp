@@ -256,28 +256,20 @@
             installButton.style.display = 'block';
             installButton.addEventListener('click', () => {
                 console.log('кнопка в мозиле');
-                navigator.mozillaAddToHomescreen({
-                    url: window.location.href,
-                    title: document.title,
-                    iconUrl: 'icon-192x192.png',
-                    manifestUrl: 'manifest.json'
-                });
+                window.installEvent.prompt();
+                // navigator.mozillaAddToHomescreen({
+                //     url: window.location.href,
+                //     title: document.title,
+                //     iconUrl: 'icon-192x192.png',
+                //     manifestUrl: 'manifest.json'
+                // });
             });
         }
-
 
         const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
         if (standaloneMediaQuery.matches) {
             // Скрыть кнопку, если приложение запущено в standalone-режиме
             installButton.style.display = 'none';
-        }
-
-        function showInstructions() {
-            alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве iOS через Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2.Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.");
-        }
-
-        if ('serviceWorker' in navigator && 'PushManager' in window) {
-            console.log("PWA ok");
         }
     </script>
 </body>
