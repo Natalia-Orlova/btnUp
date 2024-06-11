@@ -257,10 +257,16 @@
             });
         }
 
-        if (localStorage.getItem('appInstalled') === 'true') {
+        const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
+        if (localStorage.getItem('appInstalled') === 'true' || standaloneMediaQuery.matches) {
             // Скрыть кнопку, если приложение уже установлено
             installButton.style.display = 'none';
         }
+
+        // if (standaloneMediaQuery.matches) {
+        //     // Скрыть кнопку, если приложение запущено в standalone-режиме
+        //     installButton.style.display = 'none';
+        // }
     </script>
 </body>
 
