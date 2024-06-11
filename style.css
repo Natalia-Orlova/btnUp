@@ -17,14 +17,14 @@ body {
     padding: 8px 16px;
     background-color: #fff;
     border: none;
-    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
+    box-shadow: 5px 5px 5px rgba(0,0,0,.1);
     border-radius: 8px;
     display: none;
 }
 
 @media (max-width:900px) {
     .install-btn {
-        left: 20px;
+        right: 20px;
         top: 20px;
     }
 }
