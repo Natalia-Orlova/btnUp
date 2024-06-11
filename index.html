@@ -274,6 +274,14 @@
                 installButton.style.display = 'none';
             });
         });
+
+
+        const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
+
+        if (standaloneMediaQuery.matches) {
+            // Скрыть кнопку, если приложение запущено в standalone-режиме
+            document.getElementById('install-button').style.display = 'none';
+        }
     </script>
 </body>
 
