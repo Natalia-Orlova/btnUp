@@ -235,36 +235,41 @@
             installEvent = e;
         });
 
-        installButton.addEventListener('click', () => {
-            // Запускаем установку приложения
-            if (installEvent) {
-                installEvent.prompt().then((result) => {
-                    if (result.outcome === 'accepted') {
-                        // Пользователь согласился на установку, скрываем кнопку
-                        installButton.style.display = 'none';
-                    } else if (result.outcome === 'dismissed') {
-                        // Пользователь отменил установку, оставляем кнопку активной
-                        // ничего не делаем, кнопка остается активной
-                        installButton.style.display = 'block';
-                    }
-                });
-            }
-        });
+        // installButton.addEventListener('click', () => {
+        //     // Запускаем установку приложения
+        //     if (installEvent) {
+        //         installEvent.prompt().then((result) => {
+        //             if (result.outcome === 'accepted') {
+        //                 // Пользователь согласился на установку, скрываем кнопку
+        //                 installButton.style.display = 'none';
+        //             } else if (result.outcome === 'dismissed') {
+        //                 // Пользователь отменил установку, оставляем кнопку активной
+        //                 // ничего не делаем, кнопка остается активной
+        //                 installButton.style.display = 'block';
+        //             }
+        //         });
+        //     }
+        // });
 
-        if (navigator.userAgent.includes('Firefox')) {
-            console.log("firefox");
-            installButton.style.display = 'block';
-            installButton.addEventListener('click', () => {
+        installButton.addEventListener('click', () => {
                 console.log('кнопка в мозиле');
                 window.installEvent.prompt();
-                // navigator.mozillaAddToHomescreen({
-                //     url: window.location.href,
-                //     title: document.title,
-                //     iconUrl: 'icon-192x192.png',
-                //     manifestUrl: 'manifest.json'
-                // });
-            });
-        }
+        })
+
+        // if (navigator.userAgent.includes('Firefox')) {
+        //     console.log("firefox");
+        //     installButton.style.display = 'block';
+        //     installButton.addEventListener('click', () => {
+        //         console.log('кнопка в мозиле');
+        //         window.installEvent.prompt();
+        //         navigator.mozillaAddToHomescreen({
+        //             url: window.location.href,
+        //             title: document.title,
+        //             iconUrl: 'icon-192x192.png',
+        //             manifestUrl: 'manifest.json'
+        //         });
+        //     });
+        // }
 
         const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
         if (standaloneMediaQuery.matches) {
