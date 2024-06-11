@@ -39,7 +39,12 @@ self.addEventListener('activate', event => {
   );
 });
 
+// self.addEventListener('appinstalled', () => {
+//   // Скрыть кнопку после установки приложения
+//   document.querySelector('.install-btn').style.display = 'none';
+// });
+
 self.addEventListener('appinstalled', () => {
-  // Скрыть кнопку после установки приложения
-  document.querySelector('.install-btn').style.display = 'none';
+  // Установить флаг, что приложение установлено
+  localStorage.setItem('appInstalled', 'true');
 });

@@ -229,10 +229,12 @@
         //         });
         // }
 
+        const installButton = document.querySelector('button');
+
         // Проверяем, поддерживает ли браузер PWA
         if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
             // Создаем кнопку для установки приложения
-            const installButton = document.querySelector('button');
+            // const installButton = document.querySelector('button');
             // installButton.textContent = 'Установить приложение';
             // document.body.appendChild(installButton);
 
@@ -253,6 +255,11 @@
                     installButton.style.display = 'none';
                 });
             });
+        }
+
+        if (localStorage.getItem('appInstalled') === 'true') {
+            // Скрыть кнопку, если приложение уже установлено
+            installButton.style.display = 'none';
         }
     </script>
 </body>
