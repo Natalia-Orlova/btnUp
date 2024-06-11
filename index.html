@@ -268,10 +268,22 @@
             installButton.style.display = 'block';
 
             // Обработчик клика по кнопке
+            // installButton.addEventListener('click', () => {
+            //     // Запускаем установку приложения
+            //     e.prompt();
+            //     installButton.style.display = 'none';
+            // });
             installButton.addEventListener('click', () => {
                 // Запускаем установку приложения
-                e.prompt();
-                installButton.style.display = 'none';
+                e.prompt().then((result) => {
+                    if (result.outcome === 'accepted') {
+                        // Пользователь согласился на установку, скрываем кнопку
+                        installButton.style.display = 'none';
+                    } else if (result.outcome === 'dismissed') {
+                        // Пользователь отменил установку, оставляем кнопку активной
+                        // ничего не делаем, кнопка остается активной
+                    }
+                });
             });
         });
 
