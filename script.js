@@ -7,7 +7,7 @@ const btnUpStyle = document.createElement('style');
 btnUpStyle.innerHTML = `
 .btn-up {
     position: fixed;
-    left: 50px;
+    left: 100px;
     bottom: 40px;
     width: 40px;
     height: 40px;

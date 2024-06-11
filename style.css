@@ -1,6 +1,10 @@
+body {
+    background: linear-gradient(to right, #d3b971 0%, #eedcb3 20%, #eedcb3 80%, #d3b971 100%);
+}
 .content {
     max-width: 1000px;
     margin: 0 auto;
+    margin-bottom: 60px;
     padding: 4%;
     display: flex;
     flex-wrap: wrap;
