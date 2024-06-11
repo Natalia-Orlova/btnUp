@@ -226,13 +226,13 @@
 
     <script>
         const installButton = document.querySelector('button');
-        let installEvent;
+        // let installEvent;
 
         /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
         window.addEventListener('beforeinstallprompt', (e) => {
             // Показываем кнопку только если условия для установки PWA выполнены
             installButton.style.display = 'block';
-            installEvent = e;
+            window.installEvent = e;
         });
 
         // installButton.addEventListener('click', () => {
