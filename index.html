@@ -282,6 +282,7 @@
                     } else if (result.outcome === 'dismissed') {
                         // Пользователь отменил установку, оставляем кнопку активной
                         // ничего не делаем, кнопка остается активной
+                        return;
                     }
                 });
             });
@@ -292,11 +293,11 @@
 
         if (standaloneMediaQuery.matches) {
             // Скрыть кнопку, если приложение запущено в standalone-режиме
-            document.getElementById('install-button').style.display = 'none';
+            installButton.style.display = 'none';
         }
 
         if (localStorage.getItem('appInstallCancelled') === 'true') {
-            document.getElementById('install-button').style.display = 'block';
+            installButton.style.display = 'block';
             localStorage.removeItem('appInstallCancelled');
         }
     </script>
