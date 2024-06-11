@@ -1,6 +1,6 @@
 const CACHE_NAME = 'y-cache';
 const urlsToCache = [
-  '/btnUp',
+  'https://natalia-orlova.github.io/btnUp/',
   '/index.html',
   '/style.css',
   '/script.js',
