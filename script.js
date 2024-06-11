@@ -47,7 +47,7 @@ btnUpStyle.innerHTML = `
 @media (max-width:900px) {
     .btn-up {
         left: 20px;
-        bottom: 10px;
+        bottom: 20px;
     }
 }
 `;
