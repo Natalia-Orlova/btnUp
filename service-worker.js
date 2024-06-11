@@ -44,6 +44,7 @@ self.addEventListener('activate', event => {
 //   document.querySelector('.install-btn').style.display = 'none';
 // });
 
-self.addEventListener('appinstalled', () => {
-  localStorage.setItem('appInstalled', 'true');
+self.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+  localStorage.setItem('appInstallCancelled', 'true');
 });

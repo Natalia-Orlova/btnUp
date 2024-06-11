@@ -282,6 +282,11 @@
             // Скрыть кнопку, если приложение запущено в standalone-режиме
             document.getElementById('install-button').style.display = 'none';
         }
+
+        if (localStorage.getItem('appInstallCancelled') === 'true') {
+            document.getElementById('install-button').style.display = 'block';
+            localStorage.removeItem('appInstallCancelled');
+        }
     </script>
 </body>
 
