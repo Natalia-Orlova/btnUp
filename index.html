@@ -262,10 +262,11 @@
         //     installButton.style.display = 'none';
         // }
 
-
+        let installEvent;
         window.addEventListener('beforeinstallprompt', (e) => {
             // Показываем кнопку только если условия для установки PWA выполнены
             installButton.style.display = 'block';
+            installEvent = e;
 
             // Обработчик клика по кнопке
             // installButton.addEventListener('click', () => {
@@ -273,9 +274,25 @@
             //     e.prompt();
             //     installButton.style.display = 'none';
             // });
-            installButton.addEventListener('click', () => {
-                // Запускаем установку приложения
-                e.prompt().then((result) => {
+            // installButton.addEventListener('click', () => {
+            //     // Запускаем установку приложения
+            //     e.prompt().then((result) => {
+            //         if (result.outcome === 'accepted') {
+            //             // Пользователь согласился на установку, скрываем кнопку
+            //             installButton.style.display = 'none';
+            //         } else if (result.outcome === 'dismissed') {
+            //             // Пользователь отменил установку, оставляем кнопку активной
+            //             // ничего не делаем, кнопка остается активной
+            //             installButton.style.display = 'block';
+            //         }
+            //     });
+            // });
+        });
+
+        installButton.addEventListener('click', () => {
+            // Запускаем установку приложения
+            if (installEvent) {
+                installEvent.prompt().then((result) => {
                     if (result.outcome === 'accepted') {
                         // Пользователь согласился на установку, скрываем кнопку
                         installButton.style.display = 'none';
@@ -285,7 +302,7 @@
                         installButton.style.display = 'block';
                     }
                 });
-            });
+            }
         });
 
 
