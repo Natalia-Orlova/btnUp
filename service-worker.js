@@ -1,6 +1,6 @@
 const CACHE_NAME = 'y-cache';
 const urlsToCache = [
-  '/',
+  '/btnUp',
   '/index.html',
   '/style.css',
   '/script.js',
