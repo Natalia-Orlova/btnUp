@@ -219,74 +219,13 @@
     </div>
 
     <script>
-        // if ('serviceWorker' in navigator) {
-        //     navigator.serviceWorker.register('service-worker.js')
-        //         .then(registration => {
-        //             console.log('Service worker registered:', registration);
-        //         })
-        //         .catch(error => {
-        //             console.error('Service worker registration failed:', error);
-        //         });
-        // }
-
         const installButton = document.querySelector('button');
-
-        // Проверяем, поддерживает ли браузер PWA
-        // if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
-        //     // Создаем кнопку для установки приложения
-        //     // const installButton = document.querySelector('button');
-        //     // installButton.textContent = 'Установить приложение';
-        //     // document.body.appendChild(installButton);
-
-        //     // Добавляем обработчик события beforeinstallprompt
-        //     window.addEventListener('beforeinstallprompt', (event) => {
-        //         // Отменяем событие, чтобы предотвратить автоматическое отображение диалога установки
-        //         event.preventDefault();
-
-        //         // Показываем кнопку для установки приложения
-        //         installButton.style.display = 'block';
-
-        //         // Добавляем обработчик клика на кнопку
-        //         installButton.addEventListener('click', () => {
-        //             // Отображаем диалог установки приложения
-        //             event.prompt();
-
-        //             // Скрыть кнопку после установки приложения
-        //             installButton.style.display = 'none';
-        //         });
-        //     });
-        // }
-
-        // if (localStorage.getItem('appInstalled') === 'true') {
-        //     // Скрыть кнопку, если приложение уже установлено
-        //     installButton.style.display = 'none';
-        // }
-
         let installEvent;
+
         window.addEventListener('beforeinstallprompt', (e) => {
             // Показываем кнопку только если условия для установки PWA выполнены
             installButton.style.display = 'block';
             installEvent = e;
-
-            // Обработчик клика по кнопке
-            // installButton.addEventListener('click', () => {
-            //     // Запускаем установку приложения
-            //     e.prompt();
-            //     installButton.style.display = 'none';
-            // });
-            // installButton.addEventListener('click', () => {
-            //     // Запускаем установку приложения
-            //     e.prompt().then((result) => {
-            //         if (result.outcome === 'accepted') {
-            //             // Пользователь согласился на установку, скрываем кнопку
-            //             installButton.style.display = 'none';
-            //         } else if (result.outcome === 'dismissed') {
-            //             // Пользователь отменил установку, оставляем кнопку активной
-            //             // ничего не делаем, кнопка остается активной
-            //             installButton.style.display = 'block';
-            //         }
-            //     });
-            // });
         });
 
         installButton.addEventListener('click', () => {
@@ -307,7 +246,6 @@
 
 
         const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
-
         if (standaloneMediaQuery.matches) {
             // Скрыть кнопку, если приложение запущено в standalone-режиме
             installButton.style.display = 'none';
