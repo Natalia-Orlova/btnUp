@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <button class="install-btn" style="display: block;">Установить приложение</button>
     <div class="content">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur esse excepturi est corporis reprehenderit
         ipsam omnis porro. Alias porro sed temporibus molestias quam sunt adipisci, quis ipsa dolorem modi officiis,
@@ -227,12 +228,13 @@
         //             console.error('Service worker registration failed:', error);
         //         });
         // }
+
         // Проверяем, поддерживает ли браузер PWA
         if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
             // Создаем кнопку для установки приложения
-            const installButton = document.createElement('button');
-            installButton.textContent = 'Установить приложение';
-            document.body.appendChild(installButton);
+            const installButton = document.querySelector('button');
+            // installButton.textContent = 'Установить приложение';
+            // document.body.appendChild(installButton);
 
             // Добавляем обработчик события beforeinstallprompt
             window.addEventListener('beforeinstallprompt', (event) => {
