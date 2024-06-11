@@ -273,7 +273,7 @@
             //     e.prompt();
             //     installButton.style.display = 'none';
             // });
-            installButton.addEventListener('click', () => {
+            installButton.addEventListener('click', (e) => {
                 // Запускаем установку приложения
                 e.prompt().then((result) => {
                     if (result.outcome === 'accepted') {
