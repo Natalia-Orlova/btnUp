@@ -227,27 +227,60 @@
         const installButton = document.querySelector('button');
         let installEvent;
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Показываем кнопку только если условия для установки PWA выполнены
-            installButton.style.display = 'block';
-            installEvent = e;
-        });
+        // window.addEventListener('beforeinstallprompt', (e) => {
+        //     // Показываем кнопку только если условия для установки PWA выполнены
+        //     installButton.style.display = 'block';
+        //     installEvent = e;
+        // });
 
-        installButton.addEventListener('click', () => {
-            // Запускаем установку приложения
-            if (installEvent) {
-                installEvent.prompt().then((result) => {
-                    if (result.outcome === 'accepted') {
-                        // Пользователь согласился на установку, скрываем кнопку
-                        installButton.style.display = 'none';
-                    } else if (result.outcome === 'dismissed') {
-                        // Пользователь отменил установку, оставляем кнопку активной
-                        // ничего не делаем, кнопка остается активной
-                        installButton.style.display = 'block';
-                    }
-                });
-            }
-        });
+        // installButton.addEventListener('click', () => {
+        //     // Запускаем установку приложения
+        //     if (installEvent) {
+        //         installEvent.prompt().then((result) => {
+        //             if (result.outcome === 'accepted') {
+        //                 // Пользователь согласился на установку, скрываем кнопку
+        //                 installButton.style.display = 'none';
+        //             } else if (result.outcome === 'dismissed') {
+        //                 // Пользователь отменил установку, оставляем кнопку активной
+        //                 // ничего не делаем, кнопка остается активной
+        //                 installButton.style.display = 'block';
+        //             }
+        //         });
+        //     }
+        // });
+
+
+        // Проверяем, поддерживает ли браузер событие установки приложения (beforeinstallprompt)
+        if ('onbeforeinstallprompt' in window) {
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault(); // Предотвращаем отображение стандартного приглашения браузера
+                installEvent = e;
+
+                // Показываем кнопку только если условия для установки PWA выполнены
+                installButton.style.display = 'block';
+            });
+
+            installButton.addEventListener('click', () => {
+                // Запускаем установку приложения
+                if (installEvent) {
+                    installEvent.prompt()
+                        .then((choice) => {
+                            if (choice.outcome === 'accepted') {
+                                // Пользователь согласился на установку, скрываем кнопку
+                                installButton.style.display = 'none';
+                                installEvent = null;
+                            } else {
+                                // Пользователь отменил установку или что-то пошло не так
+                                // Можно оставить кнопку активной или выполнить другие действия
+                                console.log('Установка PWA отменена или произошла ошибка');
+                            }
+                        });
+                }
+            });
+        } else {
+            // Если браузер не поддерживает установку PWA, скрываем кнопку
+            installButton.style.display = 'none';
+        } F
 
 
         const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
