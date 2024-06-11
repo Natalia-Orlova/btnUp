@@ -228,7 +228,7 @@
         const installButton = document.querySelector('button');
         let installEvent;
 
-        /*Работает на Chrome, Microsoft Edge (версия 76 и выше), opera */
+        /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
         window.addEventListener('beforeinstallprompt', (e) => {
             // Показываем кнопку только если условия для установки PWA выполнены
             installButton.style.display = 'block';
@@ -252,9 +252,9 @@
         });
 
         if (navigator.userAgent.includes('Firefox')) {
-            const addButton = document.createElement('button');
-            addButton.textContent = 'Добавить на домашний экран';
-            addButton.addEventListener('click', () => {
+            installButton.style.display = 'block';
+            installButton.addEventListener('click', () => {
+                console.log('кнопка в мозиле');
                 navigator.mozillaAddToHomescreen({
                     url: window.location.href,
                     title: document.title,
@@ -262,7 +262,6 @@
                     manifestUrl: 'manifest.json'
                 });
             });
-            document.body.appendChild(addButton);
         }
 
 
