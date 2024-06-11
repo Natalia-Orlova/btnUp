@@ -27,7 +27,7 @@
 
 <body>
     <button class="install-btn">Установить приложение</button>
-    <button id="install-btn" onclick="showInstructions()">Установить как приложение</button>
+    <!-- <button id="install-btn" onclick="showInstructions()">Установить как приложение</button> -->
     <div class="content">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur esse excepturi est corporis reprehenderit
         ipsam omnis porro. Alias porro sed temporibus molestias quam sunt adipisci, quis ipsa dolorem modi officiis,
@@ -251,6 +251,20 @@
             }
         });
 
+        if (navigator.userAgent.includes('Firefox')) {
+            const addButton = document.createElement('button');
+            addButton.textContent = 'Добавить на домашний экран';
+            addButton.addEventListener('click', () => {
+                navigator.mozillaAddToHomescreen({
+                    url: window.location.href,
+                    title: document.title,
+                    iconUrl: 'icon-192x192.png',
+                    manifestUrl: 'manifest.json'
+                });
+            });
+            document.body.appendChild(addButton);
+        }
+
 
         const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
         if (standaloneMediaQuery.matches) {
@@ -260,7 +274,7 @@
 
         function showInstructions() {
             alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве iOS через Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2.Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.");
-}
+        }
 
     </script>
 </body>
