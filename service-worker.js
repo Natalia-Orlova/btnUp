@@ -1,6 +1,7 @@
 const CACHE_NAME = 'y-cache';
 const urlsToCache = [
   '/',
+  'index.html',
   '/style.css',
   '/script.js',
   '/icon-192x192.png'
