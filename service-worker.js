@@ -48,5 +48,4 @@ self.addEventListener('appinstalled', () => {
   // Установить флаг, что приложение установлено
   // localStorage.setItem('appInstalled', 'true');
   console.log('приложение установлено');
-  
 });
