@@ -15,7 +15,7 @@
       }
     ],
     "start_url": "https://natalia-orlova.github.io/btnUp/",
-    "display": "fullscreen",
+    "display": "standalone",
     "background_color": "#fff",
     "theme_color": "#d3b971",
     "firefox_add_to_homescreen": true
