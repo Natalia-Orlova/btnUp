@@ -27,7 +27,6 @@
 
 <body>
     <button class="install-btn">Установить приложение</button>
-    <button class="install-btn-instruction">Установить как приложение</button>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -248,6 +247,7 @@
     </div>
 
     <script>
+        console.log(navigator);
         const installButton = document.querySelector('.install-btn');
         let installEvent;
 
@@ -307,10 +307,6 @@
                     openModal();
                 }
             });
-
-            // function showInstructions() {
-            //     alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве\n\nчерез Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2. Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.\n\nчерез Opera:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «Добавить в...» из списка опций.\n3. Выберите «Главный экран»\n\nчерез Firefox:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «На домашний экран»");
-            // }
 
             window.addEventListener('appinstalled', () => {
                 // Скрыть кнопку установки PWA
