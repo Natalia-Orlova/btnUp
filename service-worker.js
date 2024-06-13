@@ -9,10 +9,10 @@ const CACHE_NAME = "my-cache";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
+    caches.open("my-cache").then((cache) => {
       console.log("Opened cache");
       return cache.addAll([
-        "/",
+        
         "/index.html",
         "/styles.css",
         "/script.js",
@@ -38,7 +38,7 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map(name => {
-          if (name !== CACHE_NAME) {
+          if (name !== "my-cache") {
             return caches.delete(name);
           }
         })
