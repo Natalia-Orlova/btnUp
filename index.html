@@ -239,9 +239,11 @@
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку только если условия для установки PWA выполнены
-                installButton.style.display = 'block';
+                // installButton.style.display = 'block';
                 installEvent = e;
             });
+
+            installButton.style.display = 'block';
 
             installButton.addEventListener('click', () => {
                 // Запускаем установку приложения
@@ -271,6 +273,7 @@
                     console.log('firefox');
                     alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Firefox:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «На домашний экран»");
                 }
+                installButton.style.display = 'none';
             }
 
             window.addEventListener('appinstalled', () => {
