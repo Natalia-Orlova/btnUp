@@ -248,19 +248,13 @@
 
     <script>
         if ('serviceWorker' in navigator) {
-            if (navigator.serviceWorker.controller) {
-                if (navigator.serviceWorker.controller.scope === '/') {
-                    if (navigator.serviceWorker.isInstalled) {
-                        console.log('Приложение PWA установлено');
-                    } else {
-                        console.log('Приложение PWA не установлено');
-                    }
-                } else {
-                    console.log('Установленная PWA имеет другой scope');
-                }
-            } else {
-                console.log('Service Worker не зарегистрирован');
-            }
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                .then(function (registration) {
+                    console.log('Service Worker зарегистрирован:', registration);
+                })
+                .catch(function (error) {
+                    console.log('Ошибка при регистрации Service Worker:', error);
+                });
         } else {
             console.log('Браузер не поддерживает Service Worker');
         }
