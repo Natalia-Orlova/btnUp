@@ -235,22 +235,6 @@
             installEvent = e;
         });
 
-        // function installPWA() {
-        //     // Запускаем установку приложения
-        //     if (installEvent) {
-        //         installEvent.prompt().then((result) => {
-        //             if (result.outcome === 'accepted') {
-        //                 // Пользователь согласился на установку, скрываем кнопку
-        //                 installButton.style.display = 'none';
-        //             } else if (result.outcome === 'dismissed') {
-        //                 // Пользователь отменил установку, оставляем кнопку активной
-        //                 // ничего не делаем, кнопка остается активной
-        //                 // installButton.style.display = 'block';
-        //             }
-        //         });
-        //     }
-        // }
-
         installButton.addEventListener('click', () => {
             // Запускаем установку приложения
             if (installEvent) {
@@ -267,25 +251,17 @@
             } else showInstructions();
         });
 
-        // if (navigator.userAgent.includes('Firefox')) {
-        //     console.log("firefox");
-        //     installButton.style.display = 'block';
-        //     installButton.addEventListener('click', () => {
-        //         console.log('кнопка в мозиле');
-        //         window.installEvent.prompt();
-        //         navigator.mozillaAddToHomescreen({
-        //             url: window.location.href,
-        //             title: document.title,
-        //             iconUrl: 'icon-192x192.png',
-        //             manifestUrl: 'manifest.json'
-        //         });
-        //     });
-        // }
 
-        const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
-        if (standaloneMediaQuery.matches) {
-            // Скрыть кнопку, если приложение запущено в standalone-режиме
-            installButton.style.display = 'none';
+        function showInstructions() {
+            installButton.style.display = 'block';
+            if (navigator.userAgent.includes('Safari')) {
+                alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве iOS через Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2. Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.");
+            } else if (navigator.userAgent.includes('OPR') || navigator.userAgent.includes('Opera')) {
+                installEvent.preventDefault();
+                alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Opera:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «Добавить в...» из списка опций.\n3. Выберите «Главный экран");
+            } else if (navigator.userAgent.includes('Firefox')) {
+                alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Firefox:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «На домашний экран»");
+            }
         }
 
         window.addEventListener('appinstalled', () => {
@@ -293,15 +269,10 @@
             installButton.style.display = 'none';
         });
 
-        function showInstructions() {
-            installButton.style.display = 'block';
-            if (navigator.userAgent.includes('Safari')) {
-                alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве iOS через Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2. Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.");
-            } else if (navigator.userAgent.includes('OPR') || navigator.userAgent.includes('Opera')) {
-                alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Opera:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «Добавить в...» из списка опций.\n3. Выберите «Главный экран");
-            } else if (navigator.userAgent.includes('Firefox')) {
-                alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Firefox:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «На домашний экран»");
-            }
+        const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
+        if (standaloneMediaQuery.matches) {
+            // Скрыть кнопку, если приложение запущено в standalone-режиме
+            installButton.style.display = 'none';
         }
     </script>
 </body>
