@@ -264,6 +264,7 @@
                 // Показываем кнопку только если условия для установки PWA выполнены
                 installButton.style.display = 'block';
                 installEvent = e;
+                console.log(installEvent);
             });
 
             installButton.addEventListener('click', () => {
@@ -283,11 +284,34 @@
             });
 
             if (!installEvent) {
-                const installBtnInstruction = document.querySelector('.inatsll-btn-instruction');
+                const installBtnInstruction = document.querySelector('.install-btn-instruction');
                 installBtnInstruction.style.display = 'block';
-                installBtnInstruction.addEventListener('click', openModal());
+                const modal = document.getElementById('myModal');
+                const closeButton = document.getElementsByClassName('close')[0];
+
+                function openModal() {
+                    modal.style.display = 'block';
+                }
+
+                function closeModal() {
+                    modal.style.display = 'none';
+                    installBtnInstruction.style.display = 'none';
+                }
+
+                closeButton.onclick = function () {
+                    closeModal();
+                };
+
+                window.onclick = function (event) {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                };
+                installBtnInstruction.addEventListener('click', () => {
+                    openModal();
+                });
             }
-        
+
 
 
             // function showInstructions() {
@@ -305,31 +329,6 @@
                 installButton.style.display = 'none';
             }
         }
-
-
-
-        const modal = document.getElementById('myModal');
-        const closeButton = document.getElementsByClassName('close')[0];
-
-        function openModal() {
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-            installButton.style.display = 'none';
-        }
-
-        closeButton.onclick = function () {
-            closeModal();
-        };
-
-        window.onclick = function (event) {
-            if (event.target === modal) {
-                closeModal();
-            }
-        };
-
     </script>
 </body>
 
