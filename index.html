@@ -253,7 +253,7 @@
 
         installButton.addEventListener('click', () => {
             installEvent.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
+            installEvent.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
                     console.log('User accepted the install prompt');
                     installButton.style.display = 'none';
