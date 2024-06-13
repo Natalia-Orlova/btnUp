@@ -281,12 +281,13 @@
         }
 
         if (isMobileDevice()) {
+            installButton.style.display = 'block';
+
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку только если условия для установки PWA выполнены
-                installButton.style.display = 'block';
+                // installButton.style.display = 'block';
                 installEvent = e;
-                console.log(installEvent);
             });
 
             installButton.addEventListener('click', () => {
@@ -306,7 +307,7 @@
                     openModal();
                 }
             });
-            
+
             // function showInstructions() {
             //     alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве\n\nчерез Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2. Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.\n\nчерез Opera:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «Добавить в...» из списка опций.\n3. Выберите «Главный экран»\n\nчерез Firefox:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «На домашний экран»");
             // }
