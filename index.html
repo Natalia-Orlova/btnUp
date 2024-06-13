@@ -263,6 +263,7 @@
 
 
             function showInstructions() {
+                console.log(navigator.vendor, navigator.renderer);
                 if (navigator.vendor === 'Apple Computer, Inc.' && navigator.renderer === 'WebKit') {
                     console.log('safari');
                     alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве iOS через Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2. Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.");
