@@ -228,6 +228,13 @@
         const installButton = document.querySelector('button');
         let installEvent;
 
+        const relatedApps = await navigator.getInstalledRelatedApps();
+        const PWAisInstalled = relatedApps.length > 0;
+        if (PWAisInstalled) {
+            // Скрываем кнопку установки PWA
+            installButton.style.display = 'none';
+        }
+
         /**
         * проверка, с мобильного устройства или нет зашел пользователь
         */
@@ -236,7 +243,6 @@
         }
 
         if (isMobileDevice()) {
-            console.log("Пользователь на мобильном устройстве 📱");
             installButton.style.display = 'block';
 
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
