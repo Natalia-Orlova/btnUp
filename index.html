@@ -249,6 +249,18 @@
     <script>
 
         if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js', { scope: '/btnUp/service-worker.js' })
+                .then(function (registration) {
+                    console.log('Service Worker зарегистрирован:', registration);
+                })
+                .catch(function (error) {
+                    console.log('Ошибка при регистрации Service Worker:', error);
+                });
+        } else {
+            console.log('Браузер не поддерживает Service Worker');
+        }
+
+        if ('serviceWorker' in navigator) {
             if (navigator.serviceWorker.controller) {
                 if (navigator.serviceWorker.controller.scope === '/btnUp/service-worker.js') {
                     if (navigator.serviceWorker.isInstalled) {
@@ -267,17 +279,7 @@
         }
 
 
-        // if ('serviceWorker' in navigator) {
-        //     navigator.serviceWorker.register('service-worker.js', { scope: '/btnUp/service-worker.js' })
-        //         .then(function (registration) {
-        //             console.log('Service Worker зарегистрирован:', registration);
-        //         })
-        //         .catch(function (error) {
-        //             console.log('Ошибка при регистрации Service Worker:', error);
-        //         });
-        // } else {
-        //     console.log('Браузер не поддерживает Service Worker');
-        // }
+
         const installButton = document.querySelector('.install-btn');
         let installEvent;
 
