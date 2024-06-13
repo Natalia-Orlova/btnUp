@@ -1,11 +1,11 @@
 const CACHE_NAME = "my-cache";
-const urlsToCache = [
-  "https://natalia-orlova.github.io/btnUp/",
-  "https://natalia-orlova.github.io/btnUp/index.html",
-  "https://natalia-orlova.github.io/btnUp/style.css",
-  "https://natalia-orlova.github.io/btnUp/script.js",
-  "https://natalia-orlova.github.io/btnUp/images/icon-192x192.png",
-];
+// const urlsToCache = [
+//   "https://natalia-orlova.github.io/btnUp/",
+//   "https://natalia-orlova.github.io/btnUp/index.html",
+//   "https://natalia-orlova.github.io/btnUp/style.css",
+//   "https://natalia-orlova.github.io/btnUp/script.js",
+//   "https://natalia-orlova.github.io/btnUp/images/icon-192x192.png",
+// ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
