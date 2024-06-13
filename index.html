@@ -233,7 +233,6 @@
             // Показываем кнопку только если условия для установки PWA выполнены
             installButton.style.display = 'block';
             installEvent = e;
-            installPWA();
         });
 
         function installPWA() {
@@ -246,7 +245,7 @@
                     } else if (result.outcome === 'dismissed') {
                         // Пользователь отменил установку, оставляем кнопку активной
                         // ничего не делаем, кнопка остается активной
-                        installButton.style.display = 'block';
+                        // installButton.style.display = 'block';
                     }
                 });
             }
