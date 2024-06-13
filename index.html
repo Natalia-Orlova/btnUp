@@ -239,11 +239,9 @@
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку только если условия для установки PWA выполнены
-                // installButton.style.display = 'block';
+                installButton.style.display = 'block';
                 installEvent = e;
             });
-
-            installButton.style.display = 'block';
 
             installButton.addEventListener('click', () => {
                 // Запускаем установку приложения
@@ -258,7 +256,10 @@
                             // installButton.style.display = 'block';
                         }
                     });
-                } else showInstructions();
+                } else {
+                    installButton.style.display = 'block';
+                    showInstructions();
+                }
             });
 
 
