@@ -1,10 +1,10 @@
 const CACHE_NAME = 'y-cache';
 const urlsToCache = [
-  '/btnUp/',
-  '/btnUp/index.html',
-  '/btnUp/style.css',
-  '/btnUp/script.js',
-  '/btnUp/images/icon-192x192.png'
+  'https://natalia-orlova.github.io/btnUp/',
+  'https://natalia-orlova.github.io/btnUp/index.html',
+  'https://natalia-orlova.github.io/btnUp/style.css',
+  'https://natalia-orlova.github.io/btnUp/script.js',
+  'https://natalia-orlova.github.io/btnUp/images/icon-192x192.png'
 ];
 
 self.addEventListener('install', event => {
