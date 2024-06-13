@@ -228,7 +228,7 @@
         const installButton = document.querySelector('button');
         let installEvent;
 
-        const relatedApps = await navigator.getInstalledRelatedApps();
+        const relatedApps = navigator.getInstalledRelatedApps();
         const PWAisInstalled = relatedApps.length > 0;
         if (PWAisInstalled) {
             // Скрываем кнопку установки PWA
