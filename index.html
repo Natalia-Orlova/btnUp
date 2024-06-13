@@ -274,6 +274,11 @@
             // Скрыть кнопку, если приложение запущено в standalone-режиме
             installButton.style.display = 'none';
         }
+
+        window.addEventListener('appinstalled', () => {
+            // Скрыть кнопку установки PWA
+            installButton.style.display = 'none';
+        });
     </script>
 </body>
 
