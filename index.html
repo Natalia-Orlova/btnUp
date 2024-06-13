@@ -27,7 +27,29 @@
 
 <body>
     <button class="install-btn">Установить приложение</button>
-    <!-- <button id="install-btn" onclick="showInstructions()">Установить как приложение</button> -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве</p>
+            <p>через Safari:</p>
+            <ol>
+                <li>Нажмите на кнопку «Поделиться» внизу экрана.</li>
+                <li>Выберите «Добавить на экран Домой» из списка опций.</li>
+                <li>Нажмите «Добавить» в правом верхнем углу.</li>
+            </ol>
+            <p>через Opera:</p>
+            <ol>
+                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
+                <li>Выберите «Добавить в...» из списка опций.</li>
+                <li>Выберите «Главный экран»</li>
+            </ol>
+            <p>через Firefox:</p>
+            <ol>
+                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
+                <li>Выберите «На домашний экран»</li>
+            </ol>
+        </div>
+    </div>
     <div class="content">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur esse excepturi est corporis reprehenderit
         ipsam omnis porro. Alias porro sed temporibus molestias quam sunt adipisci, quis ipsa dolorem modi officiis,
@@ -258,14 +280,14 @@
                     });
                 } else {
                     installButton.style.display = 'block';
-                    showInstructions();
+                    // showInstructions();
+                    openModal();
                 }
             });
 
 
             function showInstructions() {
                 alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве\n\nчерез Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2. Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.\n\nчерез Opera:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «Добавить в...» из списка опций.\n3. Выберите «Главный экран»\n\nчерез Firefox:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «На домашний экран»");
-                installButton.style.display = 'none';
             }
 
             window.addEventListener('appinstalled', () => {
@@ -278,7 +300,32 @@
                 // Скрыть кнопку, если приложение запущено в standalone-режиме
                 installButton.style.display = 'none';
             }
-        } 
+        }
+
+
+
+        const modal = document.getElementById('myModal');
+        const closeButton = document.getElementsByClassName('close')[0];
+
+        function openModal() {
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            installButton.style.display = 'none';
+        }
+
+        closeButton.onclick = function () {
+            closeModal();
+        };
+
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
     </script>
 </body>
 
