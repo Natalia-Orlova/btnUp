@@ -7,8 +7,9 @@ Google Chrome
 Microsoft Edge (версия 76 и выше)
 Opera
 
-Браузер Safari не поддерживют событие beforeinstallprompt
-Firefox отказывается от поддержки прогрессивных веб-приложений
+- Браузер Safari не поддерживют событие beforeinstallprompt
+- Firefox отказывается от поддержки прогрессивных веб-приложений
+- Firefox и Safari поддерживают PWA только на Android и iOS, а не на настольных компьютерах.
 
 Для Safari можно добавить инструкцию, как установить PWA на устройство iOS
 <button id="install-btn" onclick="showInstructions()">Установить как приложение</button>

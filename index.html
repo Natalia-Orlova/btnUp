@@ -233,68 +233,20 @@
             // Показываем кнопку только если условия для установки PWA выполнены
             installButton.style.display = 'block';
             installEvent = e;
-            e.preventDefault();
-            showInAppInstallPromotion();
+            installPWA;
         });
 
-        // installButton.addEventListener('click', () => {
-        //     // Запускаем установку приложения
-        //     if (installEvent) {
-        //         installEvent.prompt().then((result) => {
-        //             if (result.outcome === 'accepted') {
-        //                 // Пользователь согласился на установку, скрываем кнопку
-        //                 installButton.style.display = 'none';
-        //             } else if (result.outcome === 'dismissed') {
-        //                 // Пользователь отменил установку, оставляем кнопку активной
-        //                 // ничего не делаем, кнопка остается активной
-        //                 installButton.style.display = 'block';
-        //             }
-        //         });
-        //     }
-        // });
-
-        // installButton.addEventListener('click', () => {
-        //     installEvent.prompt();
-        //     installEvent.userChoice.then((choiceResult) => {
-        //         if (choiceResult.outcome === 'accepted') {
-        //             console.log('User accepted the install prompt');
-        //             installButton.style.display = 'none';
-        //         } else {
-        //             console.log('User dismissed the install prompt');
-        //         }
-        //     })
-        // })
-
-        function showInAppInstallPromotion() {
-            // Create a custom dialog window
-            const dialog = document.createElement('div');
-            dialog.innerHTML = `
-                <h2>Установить как приложение</h2>
-                <p>Вы хотите установить это приложение на свой домашний экран?</p>
-                <button id="install-accept">Установить</button>
-                <button id="install-cancel">Отмена</button>
-            `;
-            document.body.appendChild(dialog);
-
-            // Add event listeners to the buttons
-            document.getElementById('install-accept').addEventListener('click', () => {
-                installEvent.prompt();
-            });
-
-            document.getElementById('install-cancel').addEventListener('click', () => {
-                dialog.remove();
-            });
-        }
-
         function installPWA() {
+            // Запускаем установку приложения
             if (installEvent) {
-                installEvent.prompt();
-                installEvent.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('Пользователь подтвердил установку приложения');
+                installEvent.prompt().then((result) => {
+                    if (result.outcome === 'accepted') {
+                        // Пользователь согласился на установку, скрываем кнопку
                         installButton.style.display = 'none';
-                    } else {
-                        console.log('Пользователь отменил установку приложения');
+                    } else if (result.outcome === 'dismissed') {
+                        // Пользователь отменил установку, оставляем кнопку активной
+                        // ничего не делаем, кнопка остается активной
+                        installButton.style.display = 'block';
                     }
                 });
             }
