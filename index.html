@@ -247,7 +247,23 @@
     </div>
 
     <script>
-        console.log(navigator);
+        if ('serviceWorker' in navigator) {
+            if (navigator.serviceWorker.controller) {
+                if (navigator.serviceWorker.controller.scope === '/') {
+                    if (navigator.serviceWorker.isInstalled) {
+                        console.log('Приложение PWA установлено');
+                    } else {
+                        console.log('Приложение PWA не установлено');
+                    }
+                } else {
+                    console.log('Установленная PWA имеет другой scope');
+                }
+            } else {
+                console.log('Service Worker не зарегистрирован');
+            }
+        } else {
+            console.log('Браузер не поддерживает Service Worker');
+        }
         const installButton = document.querySelector('.install-btn');
         let installEvent;
 
