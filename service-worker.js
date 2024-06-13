@@ -1,10 +1,10 @@
 const CACHE_NAME = 'y-cache';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/images/icon-192x192.png'
+  '/btnUp/',
+  '/btnUp/index.html',
+  '/btnUp/style.css',
+  '/btnUp/script.js',
+  '/btnUp/images/icon-192x192.png'
 ];
 
 self.addEventListener('install', event => {
