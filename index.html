@@ -227,7 +227,7 @@
     <script>
         const installButton = document.querySelector('button');
         let installEvent;
-        console.log(navigator);
+
 
         /**
         * проверка, с мобильного устройства или нет зашел пользователь
@@ -265,13 +265,13 @@
 
             function showInstructions() {
                 console.log(navigator);
-                if (navigator.vendor === 'Apple Computer, Inc.' && navigator.renderer === 'WebKit') {
+                if (navigator.userAgent.includes('Safari')) {
                     console.log('safari');
                     alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве iOS через Safari:\n\n1. Нажмите на кнопку «Поделиться» внизу экрана.\n2. Выберите «Добавить на экран Домой» из списка опций.\n3. Нажмите «Добавить» в правом верхнем углу.");
-                } else if (navigator.vendor === 'Opera Software ASA' && navigator.renderer === 'Blink') {
+                } else if (navigator.userAgent.includes('OPR') && !navigator.userAgent.includes("Safari")) {
                     console.log('opera');
                     alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Opera:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «Добавить в...» из списка опций.\n3. Выберите «Главный экран");
-                } else if (navigator.vendor === 'Mozilla' && navigator.renderer === 'Gecko') {
+                } else if (navigator.userAgent.includes('Firefox')) {
                     console.log('firefox');
                     alert("Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Firefox:\n\n1. Нажмите на иконку « ⋮ » в правом верхнем углу экрана.\n2. Выберите «На домашний экран»");
                 }
