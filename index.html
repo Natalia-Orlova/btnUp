@@ -327,14 +327,13 @@
                             // installButton.style.display = 'block';
                         }
                     });
-                } else {
-                    openModal();
                 }
             });
 
             window.addEventListener('appinstalled', () => {
-                // Скрыть кнопку установки PWA
+                // Скрыть кнопки после установки PWA
                 installButton.style.display = 'none';
+                instructionButton.style.display = 'none';
             });
 
             const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
