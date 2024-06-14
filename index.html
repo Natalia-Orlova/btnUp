@@ -388,6 +388,7 @@
                 }
             });
 
+            console.log(navigator.standalone);
             // Проверяем, установлен ли PWA
             if (navigator.standalone || window.matchMedia('(display-mode: standalone)').matches) {
                 // PWA установлен, скрываем кнопку инструкции
