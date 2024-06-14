@@ -304,13 +304,13 @@
 
         if (isMobileDevice()) {
             //показываем кнопку с инструкцией
-            instructionButton.style.display = 'block';
+            // instructionButton.style.display = 'block';
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку установки только если условия для установки PWA выполнены
                 installButton.style.display = 'block';
                 //кнопку с инструкцией скрываем
-                instructionButton.style.display = 'none'; 
+                instructionButton.style.display = 'none';
                 installEvent = e;
             });
 
@@ -321,12 +321,20 @@
                         if (result.outcome === 'accepted') {
                             // Пользователь согласился на установку, скрываем кнопку
                             installButton.style.display = 'none';
+                            instructionButton.style.display = 'none';
                         } else if (result.outcome === 'dismissed') {
                             // Пользователь отменил установку, оставляем кнопку активной
                             // ничего не делаем, кнопка остается активной
                             // installButton.style.display = 'block';
                         }
                     });
+                } else {
+                    // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
+                    instructionButton.style.display = 'block';
+                    instructionButton.addEventListener('click', () => {
+                        // Показываем инструкцию по установке
+                        openModal();
+                    })
                 }
             });
 
