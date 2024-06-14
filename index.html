@@ -314,9 +314,10 @@
                 installEvent = e;
             });
 
-            installButton.addEventListener('click', () => {
-                // Запускаем установку приложения
-                if (installEvent) {
+            if (installEvent) {
+                installButton.addEventListener('click', () => {
+                    // Запускаем установку приложения
+
                     installEvent.prompt().then((result) => {
                         if (result.outcome === 'accepted') {
                             // Пользователь согласился на установку, скрываем кнопку
@@ -328,7 +329,8 @@
                             // installButton.style.display = 'block';
                         }
                     });
-                } else {
+                }) 
+            } else {
                     // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
                     instructionButton.style.display = 'block';
                     instructionButton.addEventListener('click', () => {
@@ -336,22 +338,22 @@
                         openModal();
                     })
                 }
-            });
 
-            instructionButton.addEventListener('click', openModal);
 
-            window.addEventListener('appinstalled', () => {
-                // Скрыть кнопки после установки PWA
-                installButton.style.display = 'none';
-                instructionButton.style.display = 'none';
-            });
+                instructionButton.addEventListener('click', openModal);
 
-            const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
-            if (standaloneMediaQuery.matches) {
-                // Скрыть кнопку, если приложение запущено в standalone-режиме
-                installButton.style.display = 'none';
+                window.addEventListener('appinstalled', () => {
+                    // Скрыть кнопки после установки PWA
+                    installButton.style.display = 'none';
+                    instructionButton.style.display = 'none';
+                });
+
+                const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
+                if (standaloneMediaQuery.matches) {
+                    // Скрыть кнопку, если приложение запущено в standalone-режиме
+                    installButton.style.display = 'none';
+                }
             }
-        }
     </script>
 </body>
 
