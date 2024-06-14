@@ -307,7 +307,7 @@
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 // Показываем кнопку установки только если условия для установки PWA выполнены
-                showInstallButton();
+                installButton.style.display = 'block';
                 installEvent = e;
             });
 
@@ -329,16 +329,16 @@
                 }
             })
 
-            function showInstallButton() {
-                installButton.style.display = 'block';
-                if (!installEvent) {
-                    instructionButton.style.display = 'block';
-                    instructionButton.addEventListener('click', () => {
-                        // Показываем инструкцию по установке
-                        openModal();
-                    });
-                }
-            }
+            // function showInstallButton() {
+            //     installButton.style.display = 'block';
+            //     if (!installEvent) {
+            //         instructionButton.style.display = 'block';
+            //         instructionButton.addEventListener('click', () => {
+            //             // Показываем инструкцию по установке
+            //             openModal();
+            //         });
+            //     }
+            // }
 
             if (!('beforeinstallprompt' in window)) {
                 // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
