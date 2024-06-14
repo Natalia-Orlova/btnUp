@@ -369,7 +369,7 @@
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 deferredPrompt = e;
-                showInstallButton();
+                installButton.style.display = 'block';
             });
 
             installButton.addEventListener('click', () => {
@@ -388,23 +388,15 @@
                 }
             });
 
-            function showInstallButton() {
-                installButton.style.display = 'block';
-                if (!deferredPrompt) {
-                    instructionButton.style.display = 'block';
-                    instructionButton.addEventListener('click', () => {
-                        // Показываем инструкцию по установке
-                        openModal(); // замените на свою инструкцию
-                    });
-                }
-            }
-
             if (!('beforeinstallprompt' in window)) {
+                installButton.style.display = 'none';
                 instructionButton.style.display = 'block';
                 instructionButton.addEventListener('click', () => {
                     // Показываем инструкцию по установке
-                    openModal(); // замените на свою инструкцию
+                openModal(); // замените на свою инструкцию
                 });
+            } else {
+                instructionButton.style.display = 'none';
             }
         }
     </script>
