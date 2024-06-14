@@ -305,10 +305,9 @@
         if (isMobileDevice()) {
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
                 // Показываем кнопку установки только если условия для установки PWA выполнены
-                installButton.style.display = 'block';
-                //кнопку с инструкцией скрываем
-                instructionButton.style.display = 'none';
+                showInstallButton();
                 installEvent = e;
             });
 
@@ -330,7 +329,18 @@
                 }
             })
 
-            if (!installEvent) {
+            function showInstallButton() {
+                installButton.style.display = 'block';
+                if (!installEvent) {
+                    instructionButton.style.display = 'block';
+                    instructionButton.addEventListener('click', () => {
+                        // Показываем инструкцию по установке
+                        openModal();
+                    });
+                }
+            }
+
+            if (!('beforeinstallprompt' in window)) {
                 // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
                 instructionButton.style.display = 'block';
                 instructionButton.addEventListener('click', () => {
@@ -340,12 +350,10 @@
             }
 
 
-            instructionButton.addEventListener('click', openModal);
-
             window.addEventListener('appinstalled', () => {
                 // Скрыть кнопки после установки PWA
                 installButton.style.display = 'none';
-                instructionButton.style.display = 'none';
+                // instructionButton.style.display = 'none';
             });
 
             const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
