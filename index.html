@@ -319,7 +319,6 @@
                         if (result.outcome === 'accepted') {
                             // Пользователь согласился на установку, скрываем кнопку
                             installButton.style.display = 'none';
-                            // instructionButton.style.display = 'none';
                         } else if (result.outcome === 'dismissed') {
                             // Пользователь отменил установку, оставляем кнопку активной
                             // ничего не делаем, кнопка остается активной
@@ -328,14 +327,14 @@
                 }
             })
 
-            if (!('beforeinstallprompt' in window)) {
-                // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
-                instructionButton.style.display = 'block';
-                instructionButton.addEventListener('click', () => {
-                    // Показываем инструкцию по установке
-                    openModal();
-                })
-            } 
+            // if (!('beforeinstallprompt' in window)) {
+            //     // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
+            //     instructionButton.style.display = 'block';
+            //     instructionButton.addEventListener('click', () => {
+            //         // Показываем инструкцию по установке
+            //         openModal();
+            //     })
+            // } 
 
             window.addEventListener('appinstalled', () => {
                 // Скрыть кнопки после установки PWA
