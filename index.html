@@ -330,6 +330,8 @@
                 }
             });
 
+            instructionButton.addEventListener('click', openModal());
+
             window.addEventListener('appinstalled', () => {
                 // Скрыть кнопки после установки PWA
                 installButton.style.display = 'none';
