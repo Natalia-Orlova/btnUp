@@ -27,6 +27,7 @@
 
 <body>
     <button class="install-btn">Установить приложение</button>
+    <button class="instruction-btn">Как установить приложение?</button>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -269,6 +270,7 @@
 
 
         const installButton = document.querySelector('.install-btn');
+        const instructionButton = document.querySelector('.instruction-btn');
         let installEvent;
 
         const modal = document.getElementById('myModal');
@@ -280,7 +282,7 @@
 
         function closeModal() {
             modal.style.display = 'none';
-            installButton.style.display = 'none';
+            // installButton.style.display = 'none';
         }
 
         closeButton.onclick = function () {
@@ -301,12 +303,14 @@
         }
 
         if (isMobileDevice()) {
-            installButton.style.display = 'block';
-
+            //показываем кнопку с инструкцией
+            instructionButton.style.display = 'block';
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
-                // Показываем кнопку только если условия для установки PWA выполнены
-                // installButton.style.display = 'block';
+                // Показываем кнопку установки только если условия для установки PWA выполнены
+                installButton.style.display = 'block';
+                //кнопку с инструкцией скрываем
+                instructionButton.style.display = 'none'; 
                 installEvent = e;
             });
 
