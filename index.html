@@ -388,15 +388,19 @@
                 }
             });
 
-            if (!('beforeinstallprompt' in window)) {
-                installButton.style.display = 'none';
-                instructionButton.style.display = 'block';
-                instructionButton.addEventListener('click', () => {
-                    // Показываем инструкцию по установке
-                openModal(); // замените на свою инструкцию
-                });
-            } else {
+            // Проверяем, установлен ли PWA
+            if (navigator.standalone || window.matchMedia('(display-mode: standalone)').matches) {
+                // PWA установлен, скрываем кнопку инструкции
                 instructionButton.style.display = 'none';
+            } else {
+                // PWA не установлен, отображаем кнопку инструкции
+                if (!deferredPrompt) {
+                    instructionButton.style.display = 'block';
+                    instructionButton.addEventListener('click', () => {
+                        // Показываем инструкцию по установке
+                        openModal(); // замените на свою инструкцию
+                    });
+                }
             }
         }
     </script>
