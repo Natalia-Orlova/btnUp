@@ -303,8 +303,6 @@
         }
 
         if (isMobileDevice()) {
-            //показываем кнопку с инструкцией
-            // instructionButton.style.display = 'block';
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку установки только если условия для установки PWA выполнены
@@ -314,46 +312,48 @@
                 installEvent = e;
             });
 
-            if (installEvent) {
-                installButton.addEventListener('click', () => {
-                    // Запускаем установку приложения
 
+            installButton.addEventListener('click', () => {
+                // Запускаем установку приложения
+                if (installEvent) {
                     installEvent.prompt().then((result) => {
                         if (result.outcome === 'accepted') {
                             // Пользователь согласился на установку, скрываем кнопку
                             installButton.style.display = 'none';
-                            instructionButton.style.display = 'none';
+                            // instructionButton.style.display = 'none';
                         } else if (result.outcome === 'dismissed') {
                             // Пользователь отменил установку, оставляем кнопку активной
                             // ничего не делаем, кнопка остается активной
                             // installButton.style.display = 'block';
                         }
                     });
-                }) 
-            } else {
-                    // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
-                    instructionButton.style.display = 'block';
-                    instructionButton.addEventListener('click', () => {
-                        // Показываем инструкцию по установке
-                        openModal();
-                    })
                 }
+            })
 
-
-                instructionButton.addEventListener('click', openModal);
-
-                window.addEventListener('appinstalled', () => {
-                    // Скрыть кнопки после установки PWA
-                    installButton.style.display = 'none';
-                    instructionButton.style.display = 'none';
-                });
-
-                const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
-                if (standaloneMediaQuery.matches) {
-                    // Скрыть кнопку, если приложение запущено в standalone-режиме
-                    installButton.style.display = 'none';
-                }
+            if (!installEvent) {
+                // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
+                instructionButton.style.display = 'block';
+                instructionButton.addEventListener('click', () => {
+                    // Показываем инструкцию по установке
+                    openModal();
+                })
             }
+
+
+            instructionButton.addEventListener('click', openModal);
+
+            window.addEventListener('appinstalled', () => {
+                // Скрыть кнопки после установки PWA
+                installButton.style.display = 'none';
+                instructionButton.style.display = 'none';
+            });
+
+            const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
+            if (standaloneMediaQuery.matches) {
+                // Скрыть кнопку, если приложение запущено в standalone-режиме
+                installButton.style.display = 'none';
+            }
+        }
     </script>
 </body>
 
