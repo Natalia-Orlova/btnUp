@@ -25,9 +25,9 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('my-cache-name').then(function(cache) {
       return Promise.all([
-        '/',
-        '/style.css',
-        '/script.js',
+        '/btnUp/',
+        '/btnUp/style.css',
+        '/btnUp/script.js',
         // Другие URL ресурсов
       ].map(function(url) {
         return fetch(url).then(function(response) {
