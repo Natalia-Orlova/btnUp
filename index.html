@@ -291,7 +291,7 @@
         if (isMobileDevice()) {
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
-                e.preventDefault();
+                // e.preventDefault();
                 // Показываем кнопку установки только если условия для установки PWA выполнены
                 installButton.style.display = 'block';
                 installEvent = e;
@@ -328,10 +328,6 @@
                                 <li>Выберите «Добавить на экран Домой» из списка опций.</li>
                                 <li>Нажмите «Добавить» в правом верхнем углу.</li>
                             </ol>`);
-                        // instructionButton.addEventListener('click', () => {
-                        //     // Показываем инструкцию по установке
-                        //     openModal();
-                        // })
                         break;
                     case 'Firefox':
                         modalContent.insertAdjacentHTML('beforeend',
@@ -340,10 +336,6 @@
                                 <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
                                 <li>Выберите «На домашний экран»</li>
                             </ol>`);
-                        instructionButton.addEventListener('click', () => {
-                            // Показываем инструкцию по установке
-                            openModal();
-                        })
                         break;
                     case 'Opera':
                         modalContent.insertAdjacentHTML('beforeend',
@@ -353,10 +345,6 @@
                                 <li>Выберите «Добавить в...» из списка опций.</li>
                                 <li>Выберите «Главный экран»</li>
                             </ol>`);
-                        // instructionButton.addEventListener('click', () => {
-                        //     // Показываем инструкцию по установке
-                        //     openModal();
-                        // })
                         break;
                     default:
                         break;
