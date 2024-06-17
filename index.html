@@ -287,10 +287,9 @@
             return window.innerWidth <= 768;
         }
 
-        if (isMobileDevice()) {
+        // if (isMobileDevice()) {
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
-                // e.preventDefault();
                 // Показываем кнопку установки только если условия для установки PWA выполнены
                 installButton.style.display = 'block';
                 installEvent = e;
@@ -349,7 +348,7 @@
                     default:
                         break;
                 }
-            }
+            // }
 
             // if (!('beforeinstallprompt' in window)) {
             //     // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
