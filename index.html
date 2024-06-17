@@ -291,10 +291,15 @@
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку установки только если условия для установки PWA выполнены
-                // installButton.style.display = 'block';
+                installButton.style.display = 'none';
                 installEvent = e;
-                console.log(111111);
             });
+
+            // If the application is not installed, show the installation button and remove the record from localStorage
+            if (!window.matchMedia('(display-mode: standalone)').matches) {
+                installButton.style.display = 'block';
+                localStorage.removeItem('pwaInstalled');
+            }
 
             if (localStorage.getItem('pwaInstalled') === 'true') {
                 // Hide the installation button
