@@ -344,13 +344,14 @@
             window.addEventListener('appinstalled', () => {
                 // Скрыть кнопки после установки PWA
                 installButton.style.display = 'none';
-                // instructionButton.style.display = 'none';
+                instructionButton.style.display = 'none';
             });
 
             const standaloneMediaQuery = matchMedia('(display-mode: standalone)');
             if (standaloneMediaQuery.matches) {
                 // Скрыть кнопку, если приложение запущено в standalone-режиме
                 installButton.style.display = 'none';
+                instructionButton.style.display = 'none';
             }
         }
     </script>
