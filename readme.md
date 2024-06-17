@@ -25,10 +25,7 @@
 
 ### Установка приложения через Chrome
 
-<img src="screen/pageChrome.jpg" width="30%" alt="страница в Chrome">
-<img src="screen/downloadChrome.jpg" width="30%" alt="установка приложения">
-<img src="screen/pwaApp.jpg" width="30%" alt="приложение установлено">
-<img src="screen/pwaWindow.jpg" width="30%" alt="страница в приложении">
+<img src="screen/pageChrome.jpg" width="30%" alt="страница в Chrome"> <img src="screen/downloadChrome.jpg" width="30%" alt="установка приложения"> <img src="screen/pwaApp.jpg" width="30%" alt="приложение установлено"> <img src="screen/pwaWindow.jpg" width="30%" alt="страница в приложении">
 
 ### Установка приложения через Firefox
 
