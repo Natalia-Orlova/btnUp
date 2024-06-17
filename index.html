@@ -235,24 +235,6 @@
         const browserName = browser.getBrowserName();
         console.log(browserName);
 
-        // if ('serviceWorker' in navigator) {
-        //     if (navigator.serviceWorker.controller) {
-        //         if (navigator.serviceWorker.controller.scope === '/btnUp/service-worker.js') {
-        //             if (navigator.serviceWorker.isInstalled) {
-        //                 console.log('Приложение PWA установлено');
-        //             } else {
-        //                 console.log('Приложение PWA не установлено');
-        //             }
-        //         } else {
-        //             console.log('Установленная PWA имеет другой scope');
-        //         }
-        //     } else {
-        //         console.log('Service Worker не зарегистрирован');
-        //     }
-        // } else {
-        //     console.log('Браузер не поддерживает Service Worker');
-        // }
-
         const installButton = document.querySelector('.install-btn');
         const instructionButton = document.querySelector('.instruction-btn');
         let installEvent;
@@ -291,23 +273,9 @@
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку установки только если условия для установки PWA выполнены
-                // installButton.style.display = 'block';
+                installButton.style.display = 'block';
                 installEvent = e;
             });
-
-            // If the application is not installed, show the installation button and remove the record from localStorage
-            if (!window.matchMedia('(display-mode: standalone)').matches) {
-                installButton.style.display = 'block';
-                localStorage.removeItem('pwaInstalled');
-            }
-
-            if (localStorage.getItem('pwaInstalled') === 'true') {
-                // Hide the installation button
-                installButton.style.display = 'none';
-            } else {
-                // Show the installation button
-                installButton.style.display = 'block';
-            }
 
             installButton.addEventListener('click', () => {
                 // Запускаем установку приложения
@@ -315,7 +283,6 @@
                     installEvent.prompt().then((result) => {
                         if (result.outcome === 'accepted') {
                             // Пользователь согласился на установку, скрываем кнопку
-                            localStorage.setItem('pwaInstalled', 'true');
                             installButton.style.display = 'none';
                         } else if (result.outcome === 'dismissed') {
                             // Пользователь отменил установку, оставляем кнопку активной
