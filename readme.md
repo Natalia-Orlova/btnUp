@@ -29,7 +29,7 @@
 
 ### Установка приложения через Firefox
 
-<img src="screen/pageFirefox.jpg" width="30%" alt="страница в Firefox"> <img src="screen/instrFirefox.jpg" width="30%" alt="инструкция в Firefox"> <img src="screen/downloadFirefox.jpg" width="30%" alt="установка в Firefox"> <img src="screen/labelFirefox.jpg" width="30%" alt="ярлык Firefox"> <img src="screen/pwaFirefox.jpg" width="30%" alt="страница в приложении">
+<img src="screen/pageFirefox.jpg" width="30%" alt="страница в Firefox"> <img src="screen/instrFirefox.jpg" width="30%" alt="инструкция в Firefox"> <img src="screen/downloadFirefox.jpg" width="30%" alt="установка в Firefox"> <img src="screen/pwaFirefox.jpg" width="30%" alt="страница в приложении">
 
 
 *В Opera установка примерно похожа на Firefox, отличается инструкция*
