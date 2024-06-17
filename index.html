@@ -309,15 +309,8 @@
                 if (installEvent) {
                     installEvent.prompt().then((result) => {
                         if (result.outcome === 'accepted') {
-                            localStorage.setItem('pwaInstalled', 'true');
-                            try {
-                                localStorage.setItem('test', 'test');
-                                // localStorage.removeItem('test');
-                                console.log('Доступ к localStorage есть');
-                            } catch (e) {
-                                console.log('Доступ к localStorage отсутствует');
-                            }
                             // Пользователь согласился на установку, скрываем кнопку
+                            localStorage.setItem('pwaInstalled', 'true');
                             installButton.style.display = 'none';
                         } else if (result.outcome === 'dismissed') {
                             // Пользователь отменил установку, оставляем кнопку активной
