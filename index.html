@@ -23,6 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>PWA APP</title>
 <base href="https://natalia-orlova.github.io/btnUp/">
+<script src="detect.js"></script>
 </head>
 
 <body>
@@ -350,18 +351,15 @@
             console.log(navigator);
         }
     </script>
-    <script src="detect.js"></script>
-    <script>
-        // Проверка поддержки localStorage
-        if (DetectLocalStorage.supported()) {
-            console.log('localStorage поддерживается');
-        } else {
-            console.log('localStorage НЕ поддерживается');
-        }
 
-        // Получение информации о браузере пользователя
-        console.log('Браузер пользователя: ', DetectBrowser.name());
-        console.log('Версия браузера: ', DetectBrowser.version());
+    <script>
+        // Проверяем, что библиотека detect.js загружена
+        if (typeof Detect !== 'undefined') {
+            // Теперь вы можете использовать функции из библиотеки detect.js
+            console.log(Detect.version());
+        } else {
+            console.log('Библиотека detect.js не загружена.');
+        }
     </script>
 </body>
 
