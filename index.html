@@ -321,6 +321,7 @@
             })
 
             if (browserName === 'Safari' || browserName === 'Firefox' || browserName === 'Opera') {
+                installButton.style.display = 'none';
                 instructionButton.style.display = 'block';
                 instructionButton.addEventListener('click', () => {
                     // Показываем инструкцию по установке
