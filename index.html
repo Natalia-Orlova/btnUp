@@ -296,10 +296,10 @@
             });
 
             // If the application is not installed, show the installation button and remove the record from localStorage
-            // if (!window.matchMedia('(display-mode: standalone)').matches) {
-            //     installButton.style.display = 'block';
-            //     localStorage.removeItem('pwaInstalled');
-            // }
+            if (!window.matchMedia('(display-mode: standalone)').matches) {
+                installButton.style.display = 'block';
+                localStorage.removeItem('pwaInstalled');
+            }
 
             if (localStorage.getItem('pwaInstalled') === 'true') {
                 // Hide the installation button
