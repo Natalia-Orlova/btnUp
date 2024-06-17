@@ -4,7 +4,7 @@
 <!-- <base> -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>My App PWA</title>
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
 <meta property="og:image" content="images/android-chrome-256x256.png">
@@ -229,11 +229,11 @@
         iste quaerat tempore, fuga commodi, eum temporibus exercitationem delectus, minus et placeat eius nihil
         rerum!lorem5
     </div>
-    <script type="module">
-        import Bowser from "/btnUp/bowser/bowser.js";
-        const browser = Bowser.getParser(window.navigator.userAgent);
-        const browserName = browser.getBrowserName();
-        console.log(browserName);
+    <script>
+        // import Bowser from "/btnUp/bowser/bowser.js";
+        // const browser = Bowser.getParser(window.navigator.userAgent);
+        // const browserName = browser.getBrowserName();
+        // console.log(browserName);
 
         // if ('serviceWorker' in navigator) {
         //     if (navigator.serviceWorker.controller) {
@@ -287,7 +287,7 @@
             return window.innerWidth <= 768;
         }
 
-        // if (isMobileDevice()) {
+        if (isMobileDevice()) {
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку установки только если условия для установки PWA выполнены
@@ -312,42 +312,42 @@
                 }
             })
 
-            if (browserName === 'Safari' || browserName === 'Firefox' || browserName === 'Opera') {
-                instructionButton.style.display = 'block';
-                instructionButton.addEventListener('click', () => {
-                            // Показываем инструкцию по установке
-                            openModal();
-                        })
-                switch (browserName) {
-                    case 'Safari':
-                        modalContent.insertAdjacentHTML('beforeend',
-                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Safari:</p>
-                            <ol>
-                                <li>Нажмите на кнопку «Поделиться» внизу экрана.</li>
-                                <li>Выберите «Добавить на экран Домой» из списка опций.</li>
-                                <li>Нажмите «Добавить» в правом верхнем углу.</li>
-                            </ol>`);
-                        break;
-                    case 'Firefox':
-                        modalContent.insertAdjacentHTML('beforeend',
-                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Mozilla Firefox:</p>
-                            <ol>
-                                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
-                                <li>Выберите «На домашний экран»</li>
-                            </ol>`);
-                        break;
-                    case 'Opera':
-                        modalContent.insertAdjacentHTML('beforeend',
-                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Opera:</p>
-                            <ol>
-                                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
-                                <li>Выберите «Добавить в...» из списка опций.</li>
-                                <li>Выберите «Главный экран»</li>
-                            </ol>`);
-                        break;
-                    default:
-                        break;
-                }
+            // if (browserName === 'Safari' || browserName === 'Firefox' || browserName === 'Opera') {
+            //     instructionButton.style.display = 'block';
+            //     instructionButton.addEventListener('click', () => {
+            //         // Показываем инструкцию по установке
+            //         openModal();
+            //     })
+            //     switch (browserName) {
+            //         case 'Safari':
+            //             modalContent.insertAdjacentHTML('beforeend',
+            //                 `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Safari:</p>
+            //                 <ol>
+            //                     <li>Нажмите на кнопку «Поделиться» внизу экрана.</li>
+            //                     <li>Выберите «Добавить на экран Домой» из списка опций.</li>
+            //                     <li>Нажмите «Добавить» в правом верхнем углу.</li>
+            //                 </ol>`);
+            //             break;
+            //         case 'Firefox':
+            //             modalContent.insertAdjacentHTML('beforeend',
+            //                 `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Mozilla Firefox:</p>
+            //                 <ol>
+            //                     <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
+            //                     <li>Выберите «На домашний экран»</li>
+            //                 </ol>`);
+            //             break;
+            //         case 'Opera':
+            //             modalContent.insertAdjacentHTML('beforeend',
+            //                 `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Opera:</p>
+            //                 <ol>
+            //                     <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
+            //                     <li>Выберите «Добавить в...» из списка опций.</li>
+            //                     <li>Выберите «Главный экран»</li>
+            //                 </ol>`);
+            //             break;
+            //         default:
+            //             break;
+            //     }
             // }
 
             // if (!('beforeinstallprompt' in window)) {
@@ -372,12 +372,5 @@
             }
         }
     </script>
-
-    <!-- <script type="module">
-        import Bowser from "/bowser/bowser.js";
-        const browser = Bowser.getParser(window.navigator.userAgent);
-        console.log(browser.getBrowserName());
-    </script> -->
 </body>
-
 </html>
