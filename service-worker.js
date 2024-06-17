@@ -11,7 +11,12 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open("my-cache").then((cache) => {
       console.log("Opened cache");
-      return cache.addAll(urlsToCache);
+      return cache.addAll([
+        '/',
+        '/style.css',
+        '/script.js',
+        // Другие URL ресурсов
+      ]);
     })
   );
 });
