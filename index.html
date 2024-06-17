@@ -232,7 +232,6 @@
         import Bowser from "/btnUp/bowser/bowser.js";
         const browser = Bowser.getParser(window.navigator.userAgent);
         const browserName = browser.getBrowserName();
-        console.log(browserName);
 
         const installButton = document.querySelector('.install-btn');
         const instructionButton = document.querySelector('.instruction-btn');
@@ -242,7 +241,9 @@
         const modalContent = modal.querySelector('.modal-content');
         const closeButton = document.getElementsByClassName('close')[0];
 
-
+        /**
+         * регистрация service-worker
+         */
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/btnUp/service-worker.js').then(registration => {
