@@ -22,34 +22,16 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <title>PWA APP</title>
-<base href="https://natalia-orlova.github.io/btnUp/">
-<script src="detect.js"></script>
+<!-- <base href="https://natalia-orlova.github.io/btnUp/"> -->
 </head>
 
 <body>
     <button class="install-btn">Установить приложение</button>
     <button class="instruction-btn">Как установить приложение?</button>
+
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве</p>
-            <p>через Safari:</p>
-            <ol>
-                <li>Нажмите на кнопку «Поделиться» внизу экрана.</li>
-                <li>Выберите «Добавить на экран Домой» из списка опций.</li>
-                <li>Нажмите «Добавить» в правом верхнем углу.</li>
-            </ol>
-            <p>через Opera:</p>
-            <ol>
-                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
-                <li>Выберите «Добавить в...» из списка опций.</li>
-                <li>Выберите «Главный экран»</li>
-            </ol>
-            <p>через Firefox:</p>
-            <ol>
-                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
-                <li>Выберите «На домашний экран»</li>
-            </ol>
         </div>
     </div>
     <div class="content">
@@ -247,7 +229,12 @@
         iste quaerat tempore, fuga commodi, eum temporibus exercitationem delectus, minus et placeat eius nihil
         rerum!lorem5
     </div>
-    <script>
+    <script type="module">
+        import Bowser from "/bowser/bowser.js";
+        const browser = Bowser.getParser(window.navigator.userAgent);
+        const browserName = browser.getBrowserName();
+        console.log(browser);
+        console.log(browserName);
 
         // if ('serviceWorker' in navigator) {
         //     if (navigator.serviceWorker.controller) {
@@ -267,13 +254,12 @@
         //     console.log('Браузер не поддерживает Service Worker');
         // }
 
-
-
         const installButton = document.querySelector('.install-btn');
         const instructionButton = document.querySelector('.instruction-btn');
         let installEvent;
 
         const modal = document.getElementById('myModal');
+        const modalContent = modal.querySelector('.modal-content');
         const closeButton = document.getElementsByClassName('close')[0];
 
         function openModal() {
@@ -282,7 +268,7 @@
 
         function closeModal() {
             modal.style.display = 'none';
-            // installButton.style.display = 'none';
+            // instructionButton.style.display = 'none';
         }
 
         closeButton.onclick = function () {
@@ -327,6 +313,56 @@
                 }
             })
 
+            if (browserName === 'Safari' || browserName === 'Firefox' || browserName === 'Opera') {
+                instructionButton.style.display = 'block';
+                instructionButton.addEventListener('click', () => {
+                            // Показываем инструкцию по установке
+                            openModal();
+                        })
+                switch (browserName) {
+                    case 'Safari':
+                        modalContent.insertAdjacentHTML('beforeend',
+                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Safari:</p>
+                            <ol>
+                                <li>Нажмите на кнопку «Поделиться» внизу экрана.</li>
+                                <li>Выберите «Добавить на экран Домой» из списка опций.</li>
+                                <li>Нажмите «Добавить» в правом верхнем углу.</li>
+                            </ol>`);
+                        // instructionButton.addEventListener('click', () => {
+                        //     // Показываем инструкцию по установке
+                        //     openModal();
+                        // })
+                        break;
+                    case 'Firefox':
+                        modalContent.insertAdjacentHTML('beforeend',
+                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Mozilla Firefox:</p>
+                            <ol>
+                                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
+                                <li>Выберите «На домашний экран»</li>
+                            </ol>`);
+                        instructionButton.addEventListener('click', () => {
+                            // Показываем инструкцию по установке
+                            openModal();
+                        })
+                        break;
+                    case 'Opera':
+                        modalContent.insertAdjacentHTML('beforeend',
+                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Opera:</p>
+                            <ol>
+                                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
+                                <li>Выберите «Добавить в...» из списка опций.</li>
+                                <li>Выберите «Главный экран»</li>
+                            </ol>`);
+                        // instructionButton.addEventListener('click', () => {
+                        //     // Показываем инструкцию по установке
+                        //     openModal();
+                        // })
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             // if (!('beforeinstallprompt' in window)) {
             //     // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
             //     instructionButton.style.display = 'block';
@@ -347,20 +383,14 @@
                 // Скрыть кнопку, если приложение запущено в standalone-режиме
                 installButton.style.display = 'none';
             }
-
-            console.log(navigator);
         }
     </script>
 
-    <script>
-        // Проверяем, что библиотека detect.js загружена
-        if (typeof Detect !== 'undefined') {
-            // Теперь вы можете использовать функции из библиотеки detect.js
-            console.log(Detect.version());
-        } else {
-            console.log('Библиотека detect.js не загружена.');
-        }
-    </script>
+    <!-- <script type="module">
+        import Bowser from "/bowser/bowser.js";
+        const browser = Bowser.getParser(window.navigator.userAgent);
+        console.log(browser.getBrowserName());
+    </script> -->
 </body>
 
 </html>
