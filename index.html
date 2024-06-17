@@ -267,7 +267,7 @@
 
         function closeModal() {
             modal.style.display = 'none';
-            // instructionButton.style.display = 'none';
+            instructionButton.style.display = 'none';
         }
 
         closeButton.onclick = function () {
@@ -349,15 +349,6 @@
                         break;
                 }
             }
-
-            // if (!('beforeinstallprompt' in window)) {
-            //     // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
-            //     instructionButton.style.display = 'block';
-            //     instructionButton.addEventListener('click', () => {
-            //         // Показываем инструкцию по установке
-            //         openModal();
-            //     })
-            // } 
 
             window.addEventListener('appinstalled', () => {
                 // Скрыть кнопки после установки PWA
