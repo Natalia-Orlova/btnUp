@@ -36,6 +36,10 @@
 
 <img src="screen/instrOpera.jpg" width="30%" alt="инструкция в Opera">
 
+### Ярлыки установленного pwa через разные браузеры
+
+<img src="screen/labels.jpg" alt="ярлыки pwa">
+
 
 
 
