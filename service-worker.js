@@ -52,7 +52,7 @@ self.addEventListener("appinstalled", () => {
   document.querySelector(".install-btn").style.display = "none";
 });
 
-self.addEventListener("beforeinstallprompt", (event) => {
-  event.preventDefault();
-  localStorage.setItem("appInstallCancelled", "true");
-});
+// self.addEventListener("beforeinstallprompt", (event) => {
+//   event.preventDefault();
+//   localStorage.setItem("appInstallCancelled", "true");
+// });
