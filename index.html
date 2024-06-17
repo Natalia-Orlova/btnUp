@@ -230,10 +230,10 @@
         rerum!lorem5
     </div>
     <script type="module">
-        // import Bowser from "/btnUp/bowser/bowser.js";
-        // const browser = Bowser.getParser(window.navigator.userAgent);
-        // const browserName = browser.getBrowserName();
-        // console.log(browserName);
+        import Bowser from "/btnUp/bowser/bowser.js";
+        const browser = Bowser.getParser(window.navigator.userAgent);
+        const browserName = browser.getBrowserName();
+        console.log(browserName);
 
         // if ('serviceWorker' in navigator) {
         //     if (navigator.serviceWorker.controller) {
@@ -312,43 +312,43 @@
                 }
             })
 
-            // if (browserName === 'Safari' || browserName === 'Firefox' || browserName === 'Opera') {
-            //     instructionButton.style.display = 'block';
-            //     instructionButton.addEventListener('click', () => {
-            //         // Показываем инструкцию по установке
-            //         openModal();
-            //     })
-            //     switch (browserName) {
-            //         case 'Safari':
-            //             modalContent.insertAdjacentHTML('beforeend',
-            //                 `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Safari:</p>
-            //                 <ol>
-            //                     <li>Нажмите на кнопку «Поделиться» внизу экрана.</li>
-            //                     <li>Выберите «Добавить на экран Домой» из списка опций.</li>
-            //                     <li>Нажмите «Добавить» в правом верхнем углу.</li>
-            //                 </ol>`);
-            //             break;
-            //         case 'Firefox':
-            //             modalContent.insertAdjacentHTML('beforeend',
-            //                 `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Mozilla Firefox:</p>
-            //                 <ol>
-            //                     <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
-            //                     <li>Выберите «На домашний экран»</li>
-            //                 </ol>`);
-            //             break;
-            //         case 'Opera':
-            //             modalContent.insertAdjacentHTML('beforeend',
-            //                 `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Opera:</p>
-            //                 <ol>
-            //                     <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
-            //                     <li>Выберите «Добавить в...» из списка опций.</li>
-            //                     <li>Выберите «Главный экран»</li>
-            //                 </ol>`);
-            //             break;
-            //         default:
-            //             break;
-            //     }
-            // }
+            if (browserName === 'Safari' || browserName === 'Firefox' || browserName === 'Opera') {
+                instructionButton.style.display = 'block';
+                instructionButton.addEventListener('click', () => {
+                    // Показываем инструкцию по установке
+                    openModal();
+                })
+                switch (browserName) {
+                    case 'Safari':
+                        modalContent.insertAdjacentHTML('beforeend',
+                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Safari:</p>
+                            <ol>
+                                <li>Нажмите на кнопку «Поделиться» внизу экрана.</li>
+                                <li>Выберите «Добавить на экран Домой» из списка опций.</li>
+                                <li>Нажмите «Добавить» в правом верхнем углу.</li>
+                            </ol>`);
+                        break;
+                    case 'Firefox':
+                        modalContent.insertAdjacentHTML('beforeend',
+                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Mozilla Firefox:</p>
+                            <ol>
+                                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
+                                <li>Выберите «На домашний экран»</li>
+                            </ol>`);
+                        break;
+                    case 'Opera':
+                        modalContent.insertAdjacentHTML('beforeend',
+                            `<p>Пожалуйста, следуйте этим шагам для установки приложения на вашем устройстве через Opera:</p>
+                            <ol>
+                                <li>Нажмите на иконку « ⋮ » в правом верхнем углу экрана.</li>
+                                <li>Выберите «Добавить в...» из списка опций.</li>
+                                <li>Выберите «Главный экран»</li>
+                            </ol>`);
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             // if (!('beforeinstallprompt' in window)) {
             //     // Если браузер не предлагает установку PWA, добавляем кнопку с инструкцией
