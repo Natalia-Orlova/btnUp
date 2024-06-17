@@ -245,7 +245,7 @@
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                navigator.serviceWorker.register('/btnUp/service-worker.js').then(registration => {
                     console.log('Service Worker registered with scope:', registration.scope);
                 }).catch(error => {
                     console.log('Service Worker registration failed:', error);
@@ -253,19 +253,19 @@
             });
         }
 
+        /**
+         * Функции для модального окна
+        */
         function openModal() {
             modal.style.display = 'block';
         }
-
         function closeModal() {
             modal.style.display = 'none';
             instructionButton.style.display = 'none';
         }
-
         closeButton.onclick = function () {
             closeModal();
         };
-
         window.onclick = function (event) {
             if (event.target === modal) {
                 closeModal();
