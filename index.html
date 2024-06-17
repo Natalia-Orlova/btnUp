@@ -233,7 +233,6 @@
         import Bowser from "/btnUp/bowser/bowser.js";
         const browser = Bowser.getParser(window.navigator.userAgent);
         const browserName = browser.getBrowserName();
-        console.log(browser);
         console.log(browserName);
 
         // if ('serviceWorker' in navigator) {
@@ -295,6 +294,7 @@
                 // Показываем кнопку установки только если условия для установки PWA выполнены
                 installButton.style.display = 'block';
                 installEvent = e;
+                console.log(111111);
             });
 
 
