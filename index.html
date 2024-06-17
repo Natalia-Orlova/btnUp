@@ -351,6 +351,18 @@
         }
     </script>
     <script src="detect.js"></script>
+    <script>
+        // Проверка поддержки localStorage
+        if (DetectLocalStorage.supported()) {
+            console.log('localStorage поддерживается');
+        } else {
+            console.log('localStorage НЕ поддерживается');
+        }
+
+        // Получение информации о браузере пользователя
+        console.log('Браузер пользователя: ', DetectBrowser.name());
+        console.log('Версия браузера: ', DetectBrowser.version());
+    </script>
 </body>
 
 </html>
