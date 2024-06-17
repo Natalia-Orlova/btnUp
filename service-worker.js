@@ -32,6 +32,7 @@ self.addEventListener('install', function(event) {
       ].map(function(url) {
         return fetch(url).then(function(response) {
           if (response.ok) {
+            console.log('ok');
             return cache.add(url);
           } else {
             console.error('Failed to fetch resource:', url);
@@ -72,8 +73,3 @@ self.addEventListener("appinstalled", () => {
   // Скрыть кнопку после установки приложения
   document.querySelector(".install-btn").style.display = "none";
 });
-
-// self.addEventListener("beforeinstallprompt", (event) => {
-//   event.preventDefault();
-//   localStorage.setItem("appInstallCancelled", "true");
-// });
