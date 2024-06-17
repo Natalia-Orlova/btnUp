@@ -291,17 +291,25 @@
             /*Работает на Chrome, Microsoft Edge (версия 76 и выше) */
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Показываем кнопку установки только если условия для установки PWA выполнены
-                installButton.style.display = 'block';
+                // installButton.style.display = 'block';
                 installEvent = e;
                 console.log(111111);
             });
 
+            if (localStorage.getItem('pwaInstalled') === 'true') {
+                // Hide the installation button
+                installButton.style.display = 'none';
+            } else {
+                // Show the installation button
+                installButton.style.display = 'block';
+            }
 
             installButton.addEventListener('click', () => {
                 // Запускаем установку приложения
                 if (installEvent) {
                     installEvent.prompt().then((result) => {
                         if (result.outcome === 'accepted') {
+                            localStorage.setItem('pwaInstalled', 'true');
                             // Пользователь согласился на установку, скрываем кнопку
                             installButton.style.display = 'none';
                         } else if (result.outcome === 'dismissed') {
@@ -364,4 +372,5 @@
         }
     </script>
 </body>
+
 </html>
