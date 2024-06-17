@@ -7,16 +7,38 @@ const urlsToCache = [
   "https://natalia-orlova.github.io/btnUp/images/icon-192x192.png",
 ];
 
-self.addEventListener("install", (event) => {
+// self.addEventListener("install", (event) => {
+//   event.waitUntil(
+//     caches.open("my-cache").then((cache) => {
+//       console.log("Opened cache");
+//       return cache.addAll([
+//         '/',
+//         '/style.css',
+//         '/script.js',
+//         // Другие URL ресурсов
+//       ]);
+//     })
+//   );
+// });
+
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open("my-cache").then((cache) => {
-      console.log("Opened cache");
-      return cache.addAll([
+    caches.open('my-cache-name').then(function(cache) {
+      return Promise.all([
         '/',
         '/style.css',
         '/script.js',
         // Другие URL ресурсов
-      ]);
+      ].map(function(url) {
+        return fetch(url).then(function(response) {
+          if (response.ok) {
+            return cache.add(url);
+          } else {
+            console.error('Failed to fetch resource:', url);
+            return Promise.reject(new Error('Request failed'));
+          }
+        });
+      }));
     })
   );
 });
