@@ -1,7 +1,7 @@
 # PWA Application
 
 1. Создан файл manifest.json, который содержит описание приложения (имя, описание, иконки и т.д.)
-    В тег <head> добавлено: `<link rel="manifest" href="manifest.json">`
+    В тег `<head>` добавлено: `<link rel="manifest" href="manifest.json">`
 
 2. Создан файл service-worker.js, который обрабатывает запросы к приложению и кэширует ресурсы. В скрипте регистрируем service worker.
 
