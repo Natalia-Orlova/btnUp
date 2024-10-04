@@ -54,6 +54,23 @@ body {
   font-size: 28px;
 }
 
+#greetingForm {
+  margin-top: 20px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px auto;
+}
+input {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 0.5px solid #000;
+}
+#greetingMessage {
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   .install-btn, .instruction-btn {
     right: 20px;

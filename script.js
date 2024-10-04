@@ -73,4 +73,17 @@ btnUp.addEventListener('click', () => {
     })
 })
 
+document.getElementById('greetingForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Предотвращаем отправку формы
+
+    // Получаем значения из полей ввода
+    const lastName = document.getElementById('lastName').value;
+    const firstName = document.getElementById('firstName').value;
+
+    // Формируем приветствие
+    const greetingMessage = `Привет, ${firstName} ${lastName}!`;
+
+    // Выводим приветствие на страницу
+    document.getElementById('greetingMessage').textContent = greetingMessage;
+});
 
